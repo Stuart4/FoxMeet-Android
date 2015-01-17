@@ -33,6 +33,7 @@
 		<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:onClick="makeNewEvent"
 				android:text="New Event"
 				android:id="@+id/addEventButton" android:layout_gravity="center_horizontal"/>
 	</LinearLayout>

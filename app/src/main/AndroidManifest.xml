@@ -27,6 +27,10 @@
             android:name=".CreateGroup"
             android:label="@string/title_activity_create_group" >
         </activity>
+        <activity
+            android:name=".NewEvent"
+            android:label="@string/title_activity_new_event" >
+        </activity>
     </application>
 
 </manifest>

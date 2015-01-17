@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 		Window win = getWindow();
 		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
 
-		new SendCommadn().execute("stuart4@purdue.edu,events");
+//		new SendCommadn().execute("stuart4@purdue.edu,events");
 
 		listView = (ListView) findViewById(R.id.eventsView);
 		ArrayList<Event> events = new ArrayList<Event>();
@@ -74,6 +74,11 @@ public class MainActivity extends Activity {
 
 	public void openGroups (View v) {
 		Intent intent = new Intent(this, GroupActivity.class);
+		startActivity(intent);
+	}
+
+	public void makeNewEvent (View v) {
+		Intent intent = new Intent(this, NewEvent.class);
 		startActivity(intent);
 	}
 }
