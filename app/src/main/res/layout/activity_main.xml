@@ -21,17 +21,18 @@
 		<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:onClick="openGroups"
 				android:text="Groups"
 				android:id="@+id/groupButton" android:layout_gravity="center_horizontal"/>
 		<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:onClick="openContacts"
 				android:text="Contacts"
 				android:id="@+id/contactButton" android:layout_gravity="center_horizontal"/>
 		<Button
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:onClick="openContacts"
 				android:text="New Event"
 				android:id="@+id/addEventButton" android:layout_gravity="center_horizontal"/>
 	</LinearLayout>

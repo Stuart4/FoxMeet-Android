@@ -71,4 +71,9 @@ public class MainActivity extends Activity {
 		Intent i = pm.getLaunchIntentForPackage("com.google.android.contacts");
 		getApplicationContext().startActivity(i);
 	}
+
+	public void openGroups (View v) {
+		Intent intent = new Intent(this, GroupActivity.class);
+		startActivity(intent);
+	}
 }
