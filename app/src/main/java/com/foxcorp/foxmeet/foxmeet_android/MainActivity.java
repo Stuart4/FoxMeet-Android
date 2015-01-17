@@ -3,21 +3,16 @@ package com.foxcorp.foxmeet.foxmeet_android;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends Activity {
@@ -29,7 +24,13 @@ public class MainActivity extends Activity {
 		Window win = getWindow();
 		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
 
-//		new SendCommadn().execute("stuart4@purdue.edu,events");
+		try {
+			System.out.println(new SendCommand().execute("jacob@gmail.com").get());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
 
 		listView = (ListView) findViewById(R.id.eventsView);
 		ArrayList<Event> events = new ArrayList<Event>();
@@ -41,6 +42,9 @@ public class MainActivity extends Activity {
 		}
 		FancyAdapter fa = new FancyAdapter(this, events);
 		listView.setAdapter(fa);
+
+		DBTools tools = new DBTools(this);
+		ArrayList<HashMap<String, String>> list = tools.getGroups();
 	}
 
 

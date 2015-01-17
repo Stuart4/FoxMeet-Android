@@ -1,6 +1,7 @@
 package com.foxcorp.foxmeet.foxmeet_android;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.*;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 
@@ -99,6 +101,24 @@ public class CreateGroup extends Activity {
 			return true;
 		}
 
+
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void finalizeGroup(View v) {
+		StringBuilder emails = new StringBuilder();
+		for (int i = 0; i < email.size(); i++) {
+			if (i == email.size() - 1)
+				emails.append(email.get(i));
+			else emails.append(email.get(i) + ",");
+		}
+		String name = ((EditText) findViewById(R.id.editText2)).getText().toString();
+
+		DBTools tools = new DBTools(this);
+		HashMap<String, String> map = new HashMap<>();
+		map.put("name", name);
+		map.put("emails", emails.toString());
+		tools.insertGroup(map);
+
 	}
 }

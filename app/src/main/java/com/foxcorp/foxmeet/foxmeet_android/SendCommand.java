@@ -11,11 +11,11 @@ import java.net.Socket;
 /**
  * Created by jake on 1/17/15.
  */
-public class SendCommadn extends AsyncTask<String, Void, String>{
+public class SendCommand extends AsyncTask<String, Void, String>{
 	@Override
 	protected String doInBackground(String... params) {
 		try {
-			Socket sock = new Socket("35.2.88.121", 1337);
+			Socket sock = new Socket("www.iamyourintern.com", 1080);
 			PrintWriter pw = new PrintWriter(sock.getOutputStream());
 			BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			pw.println(params[0]);
