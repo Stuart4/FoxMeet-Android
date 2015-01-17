@@ -9,10 +9,8 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Spinner;
+import android.view.Window;
+import android.widget.*;
 
 import java.util.LinkedList;
 
@@ -31,6 +29,15 @@ public class NewEvent extends Activity {
 		editText = (EditText) findViewById(R.id.newEventEditText);
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, email);
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				email.remove(position);
+				adapter.notifyDataSetChanged();
+			}
+		});
+		Window win = getWindow();
+		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
 	}
 
 

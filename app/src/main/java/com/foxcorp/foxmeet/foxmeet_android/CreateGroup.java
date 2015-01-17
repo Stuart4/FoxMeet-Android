@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.*;
 
 import java.util.LinkedList;
@@ -36,6 +37,8 @@ public class CreateGroup extends Activity {
 		});
 		editText = (EditText) findViewById(R.id.editText);
 
+		Window win = getWindow();
+		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
 	}
 
 	public void finalize(View v) {
