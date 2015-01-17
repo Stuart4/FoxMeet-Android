@@ -2,11 +2,17 @@ package com.foxcorp.foxmeet.foxmeet_android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class GroupActivity extends Activity {
@@ -17,6 +23,30 @@ public class GroupActivity extends Activity {
 		setContentView(R.layout.activity_group);
 		Window win = getWindow();
 		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
+
+		ArrayList<HashMap<String, String>> list = new DBTools(this).getGroups();
+
+		Event[] groups = new Event[0];
+		try {
+			groups = new Event[list.size()];
+		} catch (Exception e) {
+		}
+
+		for (int i = 0; i < list.size(); i++) {
+			groups[i] = new Event();
+			groups[i].title = "<b>" + list.get(i).get("name") + "</b>";
+			String body = list.get(i).get("emails");
+			body = body.replaceAll(",", ",<br>");
+			groups[i].body = body;
+		}
+
+		ListView listView = (ListView) findViewById(R.id.listView);
+		ArrayList<Event> groupList = new ArrayList<>();
+		for (Event e : groups) {
+			groupList.add(e);
+		}
+		FancyAdapter fa = new FancyAdapter(this, groupList);
+		listView.setAdapter(fa);
 
 	}
 

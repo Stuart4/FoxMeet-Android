@@ -3,6 +3,8 @@ package com.foxcorp.foxmeet.foxmeet_android;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,13 +26,13 @@ public class MainActivity extends Activity {
 		Window win = getWindow();
 		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
 
-		try {
-			System.out.println(new SendCommand().execute("jacob@gmail.com").get());
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			System.out.println(new SendCommand().execute("jacob@gmail.com").get());
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		} catch (ExecutionException e) {
+//			e.printStackTrace();
+//		}
 
 		listView = (ListView) findViewById(R.id.eventsView);
 		ArrayList<Event> events = new ArrayList<Event>();
@@ -43,9 +45,8 @@ public class MainActivity extends Activity {
 		FancyAdapter fa = new FancyAdapter(this, events);
 		listView.setAdapter(fa);
 
-		DBTools tools = new DBTools(this);
-		ArrayList<HashMap<String, String>> list = tools.getGroups();
-	}
+
+}
 
 
 	@Override

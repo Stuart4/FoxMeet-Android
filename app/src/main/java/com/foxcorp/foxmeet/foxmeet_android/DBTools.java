@@ -27,11 +27,14 @@ public class DBTools extends SQLiteOpenHelper{
 
 	public DBTools(Context applicationContext) {
 		super(applicationContext, "groups.db", null, 1);
+//		this.getWritableDatabase().execSQL("CREATE TABLE groups (name TEXT, emails TEXT)");
+//		this.getWritableDatabase().execSQL("INSERT INTO groups (name, emails) VALUES ('work', 'prof@purdue.edu," +
+//				"team@purdue.edu'");
 	}
 
-	public void deleteKey (String name) {
-		this.getWritableDatabase().execSQL(String.format("DELETE FROM groups WHERE name = '%s'", name));
-	}
+//	public void deleteKey () {
+//		this.getWritableDatabase().execSQL(String.format("DROP TABLE groups"));
+//	}
 
 	public void insertGroup(HashMap<String, String> queryValues) {
 		SQLiteDatabase db = this.getWritableDatabase();

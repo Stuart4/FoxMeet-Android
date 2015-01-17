@@ -120,5 +120,8 @@ public class CreateGroup extends Activity {
 		map.put("emails", emails.toString());
 		tools.insertGroup(map);
 
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+
 	}
 }
