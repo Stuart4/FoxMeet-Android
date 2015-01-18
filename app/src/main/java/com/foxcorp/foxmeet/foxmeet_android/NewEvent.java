@@ -106,7 +106,8 @@ public class NewEvent extends Activity {
 		int idx = rg.indexOfChild(radioButton);
 		String name = ((EditText) findViewById(R.id.eventTitle)).getText().toString();
 		String location = ((EditText) findViewById(R.id.eventLocation)).getText().toString();
-		StringBuilder command = new StringBuilder(String.format("jacob@gmail.com,%d,%d,%d,%d,%s,%s,", idx,
+		StringBuilder command = new StringBuilder(String.format("%s,%d,%d,%d,%d,%s,%s,", MainActivity.personalEmail,
+				idx,
 				dp.getMonth(), dp.getDayOfMonth(), dp.getYear(), name, location));
 		Calendar cal = Calendar.getInstance();
 		for (String s : email) {

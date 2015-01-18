@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 		listView = (ListView) findViewById(R.id.eventsView);
 
 		try {
-//			new SendCommand(listView, this).execute("jacob@gmail.com").get();
+//			new SendCommand(listView, this).execute(personalEmail).get();
 		} catch (Exception exceptional) {
 			exceptional.printStackTrace();
 		}
