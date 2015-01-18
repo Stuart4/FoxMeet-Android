@@ -1,11 +1,14 @@
 package com.foxcorp.foxmeet.foxmeet_android;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +18,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
+import java.util.regex.Pattern;
 
 
 public class MainActivity extends Activity {
 		ListView listView;
+	static String personalEmail;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,7 +33,7 @@ public class MainActivity extends Activity {
 		listView = (ListView) findViewById(R.id.eventsView);
 
 		try {
-			new SendCommand(listView, this).execute("jacob@gmail.com").get();
+//			new SendCommand(listView, this).execute("jacob@gmail.com").get();
 		} catch (Exception exceptional) {
 			exceptional.printStackTrace();
 		}
@@ -43,6 +48,13 @@ public class MainActivity extends Activity {
 		FancyAdapter fa = new FancyAdapter(this, events);
 		listView.setAdapter(fa);
 
+		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+		Account[] accounts = AccountManager.get(this).getAccounts();
+		for (Account account : accounts) {
+			if (emailPattern.matcher(account.name).matches()) {
+				personalEmail = account.name;
+			}
+		}
 
 }
 

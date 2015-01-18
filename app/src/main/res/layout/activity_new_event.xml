@@ -48,6 +48,7 @@
 			<Button
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:onClick="submit"
 					android:text="Submit"
 					android:paddingBottom="20dp"
 					android:id="@+id/button5" android:layout_gravity="center_horizontal"/>
