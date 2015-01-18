@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.*;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 
 
@@ -94,5 +96,24 @@ public class NewEvent extends Activity {
 				editText.setText(address);
 			}
 		}
+	}
+
+	public void submit (View v) {
+		RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
+		int radioButtonID = rg.getCheckedRadioButtonId();
+		DatePicker dp = (DatePicker) findViewById(R.id.datePicker);
+		View radioButton = rg.findViewById(radioButtonID);
+		int idx = rg.indexOfChild(radioButton);
+		String name = ((EditText) findViewById(R.id.eventTitle)).getText().toString();
+		String location = ((EditText) findViewById(R.id.eventLocation)).getText().toString();
+		StringBuilder command = new StringBuilder(String.format("jacob@gmail.com,%d,%d,%d,%d,%s,%s,", idx,
+				dp.getMonth(), dp.getDayOfMonth(), dp.getYear(), name, location));
+		Calendar cal = Calendar.getInstance();
+		for (String s : email) {
+			command.append(s+",");
+		}
+		String comm = command.toString();
+		comm = comm.replaceAll(",$", "");
+		new SendCommand(listView, this).execute(comm);
 	}
 }

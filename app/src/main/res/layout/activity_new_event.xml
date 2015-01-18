@@ -23,23 +23,28 @@
 					android:id="@+id/datePicker"/>
 			<RadioGroup
 					android:layout_width="wrap_content"
+					android:id="@+id/radioGroup"
 					android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
 				<RadioButton
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="New RadioButton"
+						android:text="Day"
 						android:id="@+id/radioButton" android:layout_gravity="center_horizontal"/>
 				<RadioButton
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="New RadioButton"
+						android:text="Week"
 						android:id="@+id/radioButton2"/>
 				<RadioButton
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:text="New RadioButton"
+						android:text="Month"
 						android:id="@+id/radioButton3"/>
 			</RadioGroup>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/eventTitle" android:hint="Title"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/eventLocation" android:hint="Location"/>
 			<Button
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"

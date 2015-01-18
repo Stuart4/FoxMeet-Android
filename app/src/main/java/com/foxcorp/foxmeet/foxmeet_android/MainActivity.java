@@ -25,16 +25,14 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Window win = getWindow();
 		win.setNavigationBarColor(getResources().getColor(R.color.primaryDark));
-
-//		try {
-//			System.out.println(new SendCommand().execute("jacob@gmail.com").get());
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		} catch (ExecutionException e) {
-//			e.printStackTrace();
-//		}
-
 		listView = (ListView) findViewById(R.id.eventsView);
+
+		try {
+			new SendCommand(listView, this).execute("jacob@gmail.com").get();
+		} catch (Exception exceptional) {
+			exceptional.printStackTrace();
+		}
+
 		ArrayList<Event> events = new ArrayList<Event>();
 		for (int i = 0; i < 15; i++) {
 			Event e = new Event();
